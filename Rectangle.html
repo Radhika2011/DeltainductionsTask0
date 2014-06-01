@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>Rotating elemet</title>
+<link type="text/css" rel="stylesheet">
+<style>
+#elt
+{position :fixed;
+width : 10px;
+height : 10px;
+background:red;
+}
+</style>
+
+
+<script language="javascript">
+
+prompt("Enter length",length);
+prompt("Enter width",width);
+k=1;
+t=10;
+flag=1;
+function start()
+{if(flag==1)right();
+else if(flag==2)down();
+else if(flag==3)left();
+else if(flag==4)up();
+}
+
+
+function right()
+{flag=1;
+element=document.getElementById("elt");
+element.style.left = parseInt(element.style.left)+k+'px';
+if(parseInt(element.style.left)<0+length)
+setTimeout(right,t);
+else
+setTimeout(down,t);
+}
+
+
+function down()
+{
+flag=2;
+element=document.getElementById("elt");
+element.style.top = parseInt(element.style.top)+k+'px';
+if(parseInt(element.style.top)<0+width)
+setTimeout(down,t);
+else
+setTimeout(left,t);
+}
+
+
+function left()
+{
+flag=3;
+element=document.getElementById("elt");
+element.style.left = parseInt(element.style.left)-k+'px';
+if(parseInt(element.style.left)>0)
+setTimeout(left,t);
+else
+setTimeout(up,t);
+}
+
+
+function up()
+{
+flag=4;
+element=document.getElementById("elt");
+element.style.top = parseInt(element.style.top)-k+'px';
+if(parseInt(element.style.top)>0)
+p=setTimeout(up,t);
+else
+setTimeout(right,t);
+}
+	
+	
+function speedup()
+{
+t-=2;
+}
+
+function speeddown()
+{
+t+=2;
+}
+	
+</script>
+
+</head>
+<body>
+	
+<div id="header">
+<button onclick="speedup()">Speed increase</button>
+<button onclick="speeddown()">Speed decrease</button>
+<button onclick="start()">Start</button>
+</div>
+<div id="container">
+<div id="elt" style="left: 0px; top: 0px;"></div>
+</div>
+
+</body>
+</html>
