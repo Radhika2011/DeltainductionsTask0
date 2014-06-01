@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Rotating element</title>
+<link type="text/css" rel="stylesheet">
+
+<style>
+#elt
+{position :relative;
+width : 50px;
+height : 50px;
+background:red;
+}
+</style>
+
+
+<script language="javascript">
+angle=0;	
+function circle()
+{
+element=document.getElementById("elt");
+element.style.top = 250+100*Math.sin(angle)+'px';
+element.style.left = 250+100*Math.cos(angle)+'px';
+angle+=0.01;
+setTimeout(circle,10);
+}
+</script>
+
+</head>
+<body>
+<h1>Click on the element to move</h1>
+<div id="container">
+<div id="elt" onclick="circle()" style="left: 200px; top: 200px;"></div>
+</div>
+</body>
+
+</html>
