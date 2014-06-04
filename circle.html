@@ -18,10 +18,12 @@ angle=0;
 function circle()
 {
 element=document.getElementById("elt");
-element.style.top = 250+100*Math.sin(angle)+'px';
-element.style.left = 250+100*Math.cos(angle)+'px';
+var w=element.offsetWidth;
+var h=element.offsetHeight;
+element.style.top =200+(100*(Math.sin(angle))+h/2)+'px';
+element.style.left =200+(100*(Math.cos(angle))+w/2)+'px';
 angle+=0.01;
-setTimeout(circle,10);
+setTimeout(circle,1);
 }
 </script>
 
